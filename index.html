@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>千葉県 災害ボランティアセンター一覧（令和8年8月千葉豪雨・台風25号）</title>
+<meta name="description" content="令和8年8月千葉豪雨・台風25号による千葉県内の災害ボランティアセンターの開設状況と募集範囲をまとめた一覧です。">
+<style>
+  :root {
+    --bg: #f6f7f9;
+    --card: #ffffff;
+    --text: #1f2933;
+    --muted: #5b6673;
+    --line: #dde2e8;
+    --accent: #c62828;
+    --all: #1b7f4b;      /* 全国 */
+    --pref: #1f5fb4;     /* 県内 */
+    --local: #b4590f;    /* 近隣 */
+    --pending: #6b7280;  /* 調整中 */
+    --normal: #6d4c9f;   /* 通常VC */
+    --warn-bg: #fff4e5;
+    --warn-line: #f0a640;
+    --link: #0b57d0;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic UI", "Meiryo", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+  a { color: var(--link); }
+  header {
+    background: var(--accent);
+    color: #fff;
+    padding: 20px 16px 16px;
+  }
+  header .inner { max-width: 960px; margin: 0 auto; }
+  header h1 { margin: 0; font-size: 1.4rem; line-height: 1.4; }
+  header .disaster { margin: 0 0 2px; font-size: .9rem; opacity: .95; }
+  header .date { margin: 4px 0 0; font-size: .95rem; opacity: .95; }
+  main { max-width: 960px; margin: 0 auto; padding: 16px; }
+
+  .notice {
+    background: var(--warn-bg);
+    border-left: 5px solid var(--warn-line);
+    padding: 12px 14px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    font-weight: bold;
+  }
+
+  .info {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+  }
+  .info h2 { font-size: 1.05rem; margin: 0 0 6px; }
+  .info ul { margin: 0; padding-left: 1.2em; }
+  .info li { margin: 4px 0; }
+  .tel { font-size: 1.15rem; font-weight: bold; letter-spacing: .02em; }
+
+  /* 絞り込み */
+  .controls {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--bg);
+    padding: 8px 0 12px;
+    display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+  }
+  .controls button {
+    border: 2px solid var(--line);
+    background: #fff;
+    color: var(--text);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: .9rem;
+    cursor: pointer;
+  }
+  .controls button[aria-pressed="true"] {
+    background: var(--text); color: #fff; border-color: var(--text);
+  }
+  .controls input {
+    flex: 1 1 180px;
+    min-width: 0;
+    padding: 7px 12px;
+    font-size: .95rem;
+    border: 2px solid var(--line);
+    border-radius: 8px;
+  }
+
+  /* 区分 */
+  section { margin-bottom: 28px; }
+  section h2.cat {
+    font-size: 1.15rem;
+    margin: 0 0 10px;
+    padding: 8px 12px;
+    color: #fff;
+    border-radius: 6px;
+  }
+  section[data-cat="all"] h2 { background: var(--all); }
+  section[data-cat="pref"] h2 { background: var(--pref); }
+  section[data-cat="local"] h2 { background: var(--local); }
+  section[data-cat="pending"] h2 { background: var(--pending); }
+  section[data-cat="normal"] h2 { background: var(--normal); }
+  .sub-note { font-size: .9rem; color: var(--muted); margin: -2px 0 10px; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 12px 14px;
+    border-top: 5px solid var(--line);
+    display: flex; flex-direction: column;
+  }
+  section[data-cat="all"] .card { border-top-color: var(--all); }
+  section[data-cat="pref"] .card { border-top-color: var(--pref); }
+  section[data-cat="local"] .card { border-top-color: var(--local); }
+  section[data-cat="pending"] .card { border-top-color: var(--pending); }
+  .card-head { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-bottom: 6px; }
+  .card h3 { margin: 0; font-size: 1.1rem; margin-right: auto; }
+  .disaster-tag {
+    font-size: .72rem; padding: 1px 6px; border-radius: 4px;
+    border: 1px solid var(--line); color: var(--muted); white-space: nowrap;
+  }
+  dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 2px 10px; font-size: .95rem; }
+  dt { color: var(--muted); white-space: nowrap; }
+  dd { margin: 0; font-weight: bold; }
+  .extra {
+    margin-top: 8px;
+    padding: 6px 10px;
+    background: #f7f8fa;
+    border-radius: 6px;
+    font-size: .9rem;
+  }
+  .extra-label { font-size: .75rem; color: var(--muted); }
+  .portal {
+    margin-top: 8px;
+    padding: 8px 10px;
+    background: #eef5ff;
+    border: 1px solid #cfe0fb;
+    border-radius: 6px;
+    font-size: .9rem;
+  }
+  .portal-label { font-size: .75rem; color: #1f4fa0; font-weight: bold; }
+  .portal .num { font-size: 1.1rem; font-weight: bold; margin: 2px 0; }
+  .portal dl { font-size: .88rem; }
+  .portal dd { font-weight: normal; }
+  .extra ul { margin: 0; padding-left: 1.2em; }
+  .tag {
+    display: inline-block;
+    font-size: .78rem;
+    padding: 1px 8px;
+    border-radius: 4px;
+    margin: 6px 4px 0 0;
+    background: #eef1f4;
+    color: var(--muted);
+  }
+  .tag.alert { background: #fdecea; color: #b42318; font-weight: bold; }
+  .tag.diff { background: #fff4e5; color: #8a4b00; font-weight: bold; }
+  .links { margin-top: auto; padding-top: 10px; font-size: .88rem; display: flex; flex-wrap: wrap; gap: 4px 12px; }
+  .links a.main { font-weight: bold; }
+
+  .status { display: inline-block; padding: 1px 8px; border-radius: 4px; font-size: .8rem; font-weight: bold; white-space: nowrap; }
+  .st-open   { background: #e6f4ea; color: #1b6b3a; }
+  .st-adjust { background: #fff4e5; color: #8a4b00; }
+  .st-prep   { background: #e8f0fe; color: #1f4fa0; }
+  .st-normal { background: #efe8f7; color: #5b3a8c; }
+
+  /* 通常VCは表で */
+  .table-wrap { overflow-x: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card);
+    border: 1px solid var(--line);
+    font-size: .92rem;
+  }
+  th, td { padding: 8px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+  th { background: #f0f2f5; white-space: nowrap; }
+  td:first-child { font-weight: bold; white-space: nowrap; }
+  td.lk { white-space: nowrap; }
+  tr:last-child td { border-bottom: none; }
+
+  .empty { color: var(--muted); padding: 12px; display: none; }
+
+  footer {
+    max-width: 960px; margin: 0 auto; padding: 16px 16px 32px;
+    font-size: .85rem; color: var(--muted);
+    border-top: 1px solid var(--line);
+  }
+
+  @media print {
+    .controls { display: none; }
+    body { background: #fff; }
+    .card, table { break-inside: avoid; }
+    a { color: inherit; text-decoration: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="inner">
+    <p class="disaster">令和8年8月千葉豪雨（8月13日）・令和8年台風25号</p>
+    <h1>千葉県 災害ボランティアセンター一覧</h1>
+    <p class="date">2026年10月4日時点</p>
+  </div>
+</header>
+
+<main>
+  <p class="notice">
+    ※募集状況は日々変わります。出発前に必ず各市町村の社会福祉協議会（社協）ホームページ・Facebookで最新情報を確認してください。
+  </p>
+
+  <div class="info">
+    <h2>参加前に</h2>
+    <ul>
+      <li>県内の災害ボランティア活動に関するお問合せ：千葉県災害ボランティアセンター<br>
+        <span class="tel">080-2300-1450</span>（9:00〜16:30）</li>
+      <li>ボランティアバスで支援する場合は、被災市町村へ直接連絡せず、千葉県災害ボランティアセンターを通して調整してください。
+        （<a href="https://www.saigai-chiba.com/2026/09/01/%E3%83%9C%E3%83%A9%E3%83%B3%E3%83%86%E3%82%A3%E3%82%A2%E3%83%90%E3%82%B9%E3%81%A7%E3%81%AE%E6%94%AF%E6%8F%B4%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/" target="_blank" rel="noopener">詳細</a>）</li>
+      <li>活動前にボランティア活動保険に加入してください。
+        （<a href="https://www.saigai-chiba.com/2026/08/20/%E7%81%BD%E5%AE%B3%E6%99%82%E3%81%AE%E3%83%9C%E3%83%A9%E3%83%B3%E3%83%86%E3%82%A3%E3%82%A2%E6%B4%BB%E5%8B%95%E4%BF%9D%E9%99%BA%E3%81%AE%E5%8A%A0%E5%85%A5%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/" target="_blank" rel="noopener">詳細</a>）</li>
+      <li>ボランティア車両の高速道路無料措置があります。事前に手続きが必要です。
+        （<a href="https://www.saigai-chiba.com/2026/08/20/%E9%AB%98%E9%80%9F%E9%81%93%E8%B7%AF%E3%81%AE%E7%84%A1%E6%96%99%E6%8E%AA%E7%BD%AE%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/" target="_blank" rel="noopener">詳細</a>）</li>
+    </ul>
+  </div>
+
+  <div class="controls" role="search">
+    <button type="button" data-filter="any" aria-pressed="true">すべて</button>
+    <button type="button" data-filter="all" aria-pressed="false">全国から</button>
+    <button type="button" data-filter="pref" aria-pressed="false">千葉県内から</button>
+    <button type="button" data-filter="local" aria-pressed="false">市町内・近隣</button>
+    <button type="button" data-filter="pending" aria-pressed="false">調整中・準備中</button>
+    <button type="button" data-filter="normal" aria-pressed="false">通常VC</button>
+    <input type="search" id="q" placeholder="市町村名・作業内容で検索" aria-label="市町村名・作業内容で検索">
+  </div>
+
+  <!-- ===== 全国から参加OK ===== -->
+  <section data-cat="all">
+    <h2 class="cat">全国から参加OK</h2>
+    <div class="grid">
+
+      <article class="card item">
+        <div class="card-head"><h3>大網白里市</h3><span class="disaster-tag">8月豪雨</span><span class="status st-open">開設中</span></div>
+        <dl><dt>活動期間</dt><dd>8/16〜</dd><dt>募集範囲</dt><dd>全国（事前登録制）</dd></dl>
+        <div class="extra"><div class="extra-label">補足（独自集計）</div><ul>
+          <li>40名募集</li><li>ニーズ直近8件（累計473件）</li><li>土砂の撤去、家財の搬出</li></ul></div>
+        <div class="links">
+          <a class="main" href="https://www.shakyo-sys.jp/oami/info_top.php?no=16360" target="_blank" rel="noopener">詳細・登録</a>
+          <a href="http://www.oamishakyo.com/" target="_blank" rel="noopener">社協HP</a>
+          <a href="https://www.city.oamishirasato.lg.jp/" target="_blank" rel="noopener">行政HP</a>
+        </div>
+      </article>
+
+      <article class="card item">
+        <div class="card-head"><h3>市原市</h3><span class="disaster-tag">8月豪雨</span><span class="disaster-tag">台風25号</span><span class="status st-open">開設中</span></div>
+        <dl><dt>活動期間</dt><dd>8/17〜</dd><dt>募集範囲</dt><dd>全国（事前登録）</dd></dl>
+        <span class="tag alert">水曜休み（水曜以外は毎日活動）</span>
+        <div class="portal"><div class="portal-label">募集サイト掲載（10/3更新）</div>
+          <p class="num">募集人数 50名</p>
+          <dl><dt>実施期間</dt><dd>8/17〜10/25</dd><dt>募集期間</dt><dd>9/10〜10/25</dd>
+            <dt>活動内容</dt><dd>主に復興支援（泥かき、畳上げ、家財搬出等）</dd></dl></div>
+        <div class="extra"><div class="extra-label">補足（独自集計）</div><ul>
+          <li>平日30名、土日50名</li><li>家財・畳の搬出</li></ul></div>
+        <div class="links">
+          <a class="main" href="https://www.ichihara-shakyo.or.jp/" target="_blank" rel="noopener">社協HP</a>
+          <a href="https://www.facebook.com/ichiharayotuba" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.city.ichihara.chiba.jp/" target="_blank" rel="noopener">行政HP</a>
+        </div>
+      </article>
+
+      <article class="card item">
+        <div class="card-head"><h3>君津市</h3><span class="disaster-tag">台風25号</span><span class="status st-open">開設中</span></div>
+        <dl><dt>活動期間</dt><dd>10/1以降〜</dd><dt>募集範囲</dt><dd>全国</dd></dl>
+        <span class="tag alert">かなりの重労働</span>
+        <div class="extra"><div class="extra-label">補足（独自集計）</div><ul>
+          <li>6名募集</li><li>直近ニーズ1件（残り約200件）</li><li>土砂崩れ付近の住宅の土砂撤去</li></ul></div>
+        <div class="links">
+          <a class="main" href="https://www.kimitsu-shakyo.or.jp/index.php" target="_blank" rel="noopener">社協HP</a>
+          <a href="https://www.city.kimitsu.lg.jp/" target="_blank" rel="noopener">行政HP</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ===== 千葉県内から参加OK ===== -->
+  <section data-cat="pref">
+    <h2 class="cat">千葉県内から参加OK</h2>
+    <p class="sub-note">※県内募集の地域でも、東京および関東近郊から軽トラで参加OKのところがあります（車両は要確認）</p>
+    <div class="grid">
+
+      <article class="card item">
+        <div class="card-head"><h3>佐倉市</h3><span class="disaster-tag">8月豪雨</span><span class="status st-open">開設中</span></div>
+        <dl><dt>活動期間</dt><dd>8/17〜</dd><dt>募集範囲</dt><dd>県内（事前登録制）</dd></dl>
+        <span class="tag alert">軽トラ不足</span>
+        <div class="extra"><div class="extra-label">補足（独自集計）</div><ul>
+          <li>100名募集</li><li>家財および畳の搬出</li></ul></div>
+        <div class="links">
+          <a class="main" href="https://www.sakurashakyo.or.jp/pages/61?detail=1&amp;b_id=371&amp;r_id=123#block371" target="_blank" rel="noopener">詳細・登録</a>
+          <a href="https://www.sakurashakyo.or.jp/" target="_blank" rel="noopener">社協HP</a>
+          <a href="https://www.facebook.com/sakurashakyo" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.city.sakura.lg.jp/index.html" target="_blank" rel="noopener">行政HP</a>
+        </div>
+      </article>
+
+      <article class="card item">
+        <div class="card-head"><h3>千葉市</h3><span class="disaster-tag">8月豪雨</span><span class="status st-open">開設中</span></div>
+        <dl><dt>活動期間</dt><dd>8/20〜10/31（9/30休止）</dd><dt>募集範囲</dt><dd>千葉県内（事前登録）</dd></dl>
+        <span class="tag alert">10月5日（月）大型案件あり</span>
+        <span class="tag alert">雨天・荒天時は中止</span>
+        <div class="portal"><div class="portal-label">募集サイト掲載（10/4更新）</div>
+          <p class="num">募集人数 100名</p>
+          <dl><dt>実施期間</dt><dd>8/20〜10/31</dd><dt>募集期間</dt><dd>8/17〜10/31</dd>
+            <dt>活動内容</dt><dd>令和8年8月千葉豪雨災害の復興支援（中止の判断は千葉市社協HPで確認）</dd>
+            <dt>条件</dt><dd>ボランティア活動保険加入者、千葉県内在住の方</dd>
+            <dt>持ち物</dt><dd>服装：長袖・長ズボン・長靴／昼食・飲み物</dd></dl></div>
+        <div class="extra"><div class="extra-label">補足（独自集計）</div><ul>
+          <li>直近26名募集</li><li>直近ニーズ2件</li><li>家財・畳の搬出</li></ul></div>
+        <div class="links">
+          <a class="main" href="https://chiba-shakyo.jp/all/r8-saigai-vc/" target="_blank" rel="noopener">詳細・登録</a>
+          <a href="https://www.facebook.com/profile.php?id=61593208779908" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://chiba-shakyo.jp/" target="_blank" rel="noopener">社協HP</a>
+          <a href="https://www.city.chiba.jp/hokenfukushi/kenkofukushi/chiikifukushi/saigaivolunteer.html" target="_blank" rel="noopener">行政HP</a>
+        </div>
+      </article>
+
+      <article class="card item">
+        <div class="card-head"><h3>茂原市</h3><span class="disaster-tag">台風25号</span><span class="status st-open">開設中</span></div>
+        <dl><dt>活動期間</dt><dd>9/23〜</dd><dt>募集範囲</dt><dd>千葉県内</dd></dl>
+        <div class="extra"><div class="extra-label">補足（独自集計）</div><ul>
+          <li>人数・ニーズ不明</li></ul></div>
+        <div class="links">
+          <a class="main" href="https://www.mobara-shakyo.or.jp/" target="_blank" rel="noopener">社協HP</a>
+          <a href="https://www.facebook.com/profile.php?id=100063480042606" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.city.mobara.chiba.jp/" target="_blank" rel="noopener">行政HP</a>
+        </div>
+      </article>
+
+      <article class="card item">
+        <div class="card-head"><h3>長柄町</h3><span class="disaster-tag">台風25号</span><span class="status st-open">開設中</span></div>
+        <dl><dt>活動期間</dt><dd>10/1〜</dd><dt>募集範囲</dt><dd>千葉県内</dd></dl>
+        <span class="tag alert">10月5日（月）休み・6日（火）再開</span>
+        <div class="extra"><div class="extra-label">補足（独自集計）</div><ul>
+          <li>片付け、泥かき、運搬</li></ul></div>
+        <div class="links">
+          <a class="main" href="https://www.nagara-shakyo.jp/info.php?id=80" target="_blank" rel="noopener">社協HP（詳細）</a>
+          <a href="https://www.facebook.com/profile.php?id=100070922601111" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.town.nagara.chiba.jp/" target="_blank" rel="noopener">行政HP</a>
+        </div>
+      </article>
+
+      <article class="card item">
+        <div class="card-head"><h3>成田市</h3><span class="disaster-tag">台風25号</span><span class="status st-open">開設中</span></div>
+        <dl><dt>活動期間</dt><dd>10/2〜</dd><dt>募集範囲</dt><dd>18歳以上、千葉県内・近郊から日帰りができる方（技術ボランティアは全国）</dd></dl>
+        <span class="tag alert">活動場所は断水中</span>
+        <span class="tag diff">情報差異あり：公式まとめサイトでは「市在住・在勤、市内近郊の方」</span>
+        <div class="portal"><div class="portal-label">募集サイト掲載（10/3更新）</div>
+          <p class="num">募集人数 30名</p>
+          <dl><dt>実施期間</dt><dd>9/28〜10/18</dd><dt>募集期間</dt><dd>9/30〜10/18</dd>
+            <dt>活動内容</dt><dd>台風25号の浸水被害による家屋内外の片づけ、清掃、家具等の搬出補助等</dd></dl></div>
+        <div class="links">
+          <a class="main" href="http://www.naritashakyo.or.jp/" target="_blank" rel="noopener">社協HP</a>
+          <a href="https://www.city.narita.chiba.jp/" target="_blank" rel="noopener">行政HP</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ===== 市町内・近隣の方のみ ===== -->
+  <section data-cat="local">
+    <h2 class="cat">市町内・近隣の方のみ</h2>
+    <div class="grid">
+
+      <article class="card item">
+        <div class="card-head"><h3>八街市</h3><span class="disaster-tag">台風25号</span><span class="status st-open">開設中</span></div>
+        <dl><dt>活動期間</dt><dd>9/28〜</dd><dt>募集範囲</dt><dd>近隣市町限定</dd></dl>
+        <div class="extra"><div class="extra-label">補足（独自集計）</div><ul>
+          <li>20名募集、ニーズ15件</li><li>家財・畳の搬出</li></ul></div>
+        <div class="links">
+          <a class="main" href="https://www.yachimata-shakyo.or.jp/" target="_blank" rel="noopener">社協HP</a>
+          <a href="https://www.city.yachimata.lg.jp/" target="_blank" rel="noopener">行政HP</a>
+        </div>
+      </article>
+
+      <article class="card item">
+        <div class="card-head"><h3>船橋市</h3><span class="disaster-tag">台風25号</span><span class="status st-open">開設中</span></div>
+        <dl><dt>活動期間</dt><dd>9/23〜</dd><dt>募集範囲</dt><dd>市内、近隣市</dd></dl>
+        <div class="portal"><div class="portal-label">募集サイト掲載（9/23更新）</div>
+          <p class="num">募集人数 10名</p>
+          <dl><dt>実施期間</dt><dd>9/23〜10/15</dd><dt>募集期間</dt><dd>9/23〜10/15</dd>
+            <dt>活動内容</dt><dd>台風25号の被害にあった方のご自宅の片付け等</dd>
+            <dt>条件</dt><dd>市内在住または近隣在住の方のみ</dd></dl></div>
+        <div class="links">
+          <a class="main" href="https://funabashi-shakyo.or.jp/" target="_blank" rel="noopener">社協HP</a>
+          <a href="https://www.city.funabashi.lg.jp/" target="_blank" rel="noopener">行政HP</a>
+        </div>
+      </article>
+
+      <article class="card item">
+        <div class="card-head"><h3>袖ケ浦市</h3><span class="disaster-tag">台風25号</span><span class="status st-open">開設中</span></div>
+        <dl><dt>活動期間</dt><dd>9/28〜</dd><dt>募集範囲</dt><dd>市内及び近隣市</dd></dl>
+        <div class="extra"><div class="extra-label">補足（独自集計）</div><ul>
+          <li>10名／家財・畳の搬出</li></ul></div>
+        <div class="links">
+          <a class="main" href="https://www.sodegaura-shakyo.jp/" target="_blank" rel="noopener">社協HP</a>
+          <a href="https://www.city.sodegaura.lg.jp/" target="_blank" rel="noopener">行政HP</a>
+        </div>
+      </article>
+
+      <article class="card item">
+        <div class="card-head"><h3>木更津市</h3><span class="disaster-tag">台風25号</span><span class="status st-open">開設中</span></div>
+        <dl><dt>活動期間</dt><dd>9/25〜</dd><dt>募集範囲</dt><dd>市内の災害対策コーディネーターのみ</dd></dl>
+        <span class="tag alert">全て重労働</span>
+        <div class="portal"><div class="portal-label">募集サイト掲載：富来田サテライト（10/3更新）</div>
+          <p class="num">募集人数 10名</p>
+          <dl><dt>実施期間</dt><dd>9/30〜10/31</dd><dt>募集期間</dt><dd>9/29〜10/9</dd>
+            <dt>活動内容</dt><dd>宅内・庭先の土砂撤去作業、被災した家具の運び出し作業</dd>
+            <dt>条件</dt><dd>木更津市近隣にお住まいの方</dd></dl></div>
+        <span class="tag diff">富来田サテライトは市近隣在住の方も募集</span>
+        <div class="links">
+          <a class="main" href="https://www.kisarazushakyo.or.jp/" target="_blank" rel="noopener">社協HP</a>
+          <a href="https://www.city.kisarazu.lg.jp/" target="_blank" rel="noopener">行政HP</a>
+        </div>
+      </article>
+
+      <article class="card item">
+        <div class="card-head"><h3>八千代市</h3><span class="disaster-tag">8月豪雨</span><span class="status st-open">開設中</span></div>
+        <dl><dt>活動期間</dt><dd>8/19〜</dd><dt>募集範囲</dt><dd>市内、市内近郊</dd></dl>
+        <div class="portal"><div class="portal-label">募集サイト掲載（10/1更新）</div>
+          <p class="num">募集人数 4名</p>
+          <dl><dt>実施期間</dt><dd>8/19〜10/31</dd><dt>募集期間</dt><dd>8/18〜10/31</dd>
+            <dt>活動内容</dt><dd>令和8年8月千葉豪雨災害の復興支援（現状は市内在住および近隣の方）</dd>
+            <dt>条件</dt><dd>高校生以下は保護者の同意が必須</dd>
+            <dt>持ち物</dt><dd>昼食／動きやすく履き慣れている靴</dd></dl></div>
+        <div class="extra"><div class="extra-label">補足（独自集計）</div><ul>
+          <li>家財・畳の搬出</li><li>一般社団法人ワンチームが活動中</li></ul></div>
+        <div class="links">
+          <a class="main" href="https://www.yachiyosyakyo.jp/volu.php?id=266" target="_blank" rel="noopener">詳細</a>
+          <a href="https://www.yachiyosyakyo.jp/" target="_blank" rel="noopener">社協HP</a>
+          <a href="https://www.facebook.com/yachiyoshakyo" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.city.yachiyo.lg.jp/" target="_blank" rel="noopener">行政HP</a>
+        </div>
+      </article>
+
+      <article class="card item">
+        <div class="card-head"><h3>印西市</h3><span class="disaster-tag">台風25号</span><span class="status st-normal">通常VCで対応</span></div>
+        <dl><dt>活動期間</dt><dd>9/25〜10/31</dd><dt>募集範囲</dt><dd>市内在住の方（ボランティア活動保険加入者）</dd></dl>
+        <div class="portal"><div class="portal-label">募集サイト掲載（10/1更新）</div>
+          <p class="num">募集人数 7名</p>
+          <dl><dt>実施期間</dt><dd>9/25〜10/31</dd><dt>募集期間</dt><dd>9/25〜10/31</dd>
+            <dt>活動内容</dt><dd>土砂崩れ・台風25号による土砂流入で被害を受けた家屋内外の片づけ、清掃、家具等の搬出補助等</dd></dl></div>
+        <span class="tag">公式まとめサイトでは「通常VC対応・満18歳以上の市在住・在勤・在学者」</span>
+        <div class="links">
+          <a class="main" href="https://www.inzaishakyo.jp/" target="_blank" rel="noopener">社協HP</a>
+          <a href="https://www.city.inzai.lg.jp/" target="_blank" rel="noopener">行政HP</a>
+        </div>
+      </article>
+
+      <article class="card item">
+        <div class="card-head"><h3>白井市</h3><span class="disaster-tag">8月豪雨</span><span class="status st-open">開設中</span></div>
+        <dl><dt>活動期間</dt><dd>未定</dd><dt>募集範囲</dt><dd>市内</dd></dl>
+        <div class="extra"><div class="extra-label">補足（独自集計）</div><ul>
+          <li>登録は電話で</li></ul></div>
+        <div class="links">
+          <a class="main" href="https://www.shiroishakyo.or.jp/8%e6%9c%8813%e6%97%a5%e7%99%ba%e7%94%9f%e3%81%ae%e3%80%8e%e4%bb%a4%e5%92%8c8%e5%b9%b48%e6%9c%88%e5%8d%83%e8%91%89%e8%b1%aa%e9%9b%a8%e3%80%8f%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6/" target="_blank" rel="noopener">詳細</a>
+          <a href="https://www.shiroishakyo.or.jp/" target="_blank" rel="noopener">社協HP</a>
+          <a href="https://www.city.shiroi.chiba.jp/" target="_blank" rel="noopener">行政HP</a>
+        </div>
+      </article>
+
+      <article class="card item">
+        <div class="card-head"><h3>鎌ケ谷市</h3><span class="disaster-tag">8月豪雨</span><span class="status st-open">開設中</span></div>
+        <dl><dt>活動期間</dt><dd>8/21〜（9/1〜9/10休止）</dd><dt>募集範囲</dt><dd>市内、近隣市</dd></dl>
+        <span class="tag diff">情報差異あり：別情報では「中止」</span>
+        <div class="links">
+          <a class="main" href="https://www.kamagayashakyo.com/news/06/news-20260817-1039" target="_blank" rel="noopener">詳細</a>
+          <a href="https://www.kamagayashakyo.com/" target="_blank" rel="noopener">社協HP</a>
+          <a href="https://www.city.kamagaya.chiba.jp/" target="_blank" rel="noopener">行政HP</a>
+        </div>
+      </article>
+
+      <article class="card item">
+        <div class="card-head"><h3>松戸市</h3><span class="disaster-tag">8月豪雨</span><span class="status st-open">開設中</span></div>
+        <dl><dt>活動期間</dt><dd>8/19〜</dd><dt>募集範囲</dt><dd>松戸市内在住在勤</dd></dl>
+        <span class="tag diff">情報差異あり：別情報では「9月16日終了（延べ33件・145人が活動）」</span>
+        <div class="links">
+          <a class="main" href="https://www.matsudo-shakyo.or.jp/%e6%9d%be%e6%88%b8%e5%b8%82%e7%81%bd%e5%ae%b3-%e3%83%9c%e3%83%a9%e3%83%b3%e3%83%86%e3%82%a3%e3%82%a2%e3%82%bb%e3%83%b3%e3%82%bf%e3%83%bc%e3%82%92%e9%96%8b%e8%a8%ad%e3%81%97%e3%81%be%e3%81%99%e3%80%82/" target="_blank" rel="noopener">詳細</a>
+          <a href="https://www.matsudo-shakyo.or.jp/" target="_blank" rel="noopener">社協HP</a>
+          <a href="https://www.facebook.com/profile.php?id=100068506080042" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.city.matsudo.chiba.jp/" target="_blank" rel="noopener">行政HP</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ===== 調整中・準備中 ===== -->
+  <section data-cat="pending">
+    <h2 class="cat">調整中・準備中</h2>
+    <p class="sub-note">※災害VCは開設済みでも、活動期間や募集範囲が調整中の地域です。</p>
+    <div class="grid">
+
+      <article class="card item">
+        <div class="card-head"><h3>富津市</h3><span class="disaster-tag">台風25号</span><span class="status st-prep">開設準備中</span></div>
+        <dl><dt>活動期間</dt><dd>10/5設置予定</dd><dt>募集範囲</dt><dd>調整中</dd></dl>
+        <div class="links">
+          <a class="main" href="https://www.facebook.com/futtsuvc/" target="_blank" rel="noopener">Facebook</a>
+          <a href="http://www.futtsushakyo.jp/index.php" target="_blank" rel="noopener">社協HP</a>
+          <a href="https://www.city.futtsu.lg.jp/" target="_blank" rel="noopener">行政HP</a>
+        </div>
+      </article>
+
+      <article class="card item">
+        <div class="card-head"><h3>大多喜町</h3><span class="disaster-tag">台風25号</span><span class="status st-adjust">開設中・調整中</span></div>
+        <dl><dt>活動期間</dt><dd>調整中</dd><dt>募集範囲</dt><dd>調整中</dd></dl>
+        <div class="extra"><div class="extra-label">補足（独自集計）</div><ul>
+          <li>町内のみ／片付け、搬出、土砂撤去</li></ul></div>
+        <div class="links">
+          <a class="main" href="https://www.ootaki-shakyo.jp/" target="_blank" rel="noopener">社協HP</a>
+          <a href="https://www.facebook.com/people/%E5%A4%A7%E5%A4%9A%E5%96%9C%E7%94%BA%E7%A4%BE%E5%8D%94/pfbid0Cd8EdJruKWzQQNsbDGqsvRbPFDqYEvLuWaPHZKR3LgXquBECSMUQAGbK4MqWU3cBl/" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.town.otaki.chiba.jp/" target="_blank" rel="noopener">行政HP</a>
+        </div>
+      </article>
+
+      <article class="card item">
+        <div class="card-head"><h3>山武市</h3><span class="disaster-tag">台風25号</span><span class="status st-adjust">開設中・調整中</span></div>
+        <dl><dt>活動期間</dt><dd>調整中</dd><dt>募集範囲</dt><dd>山武市内、近隣市町</dd></dl>
+        <div class="links">
+          <a class="main" href="https://www.sammushakyo.jp/" target="_blank" rel="noopener">社協HP</a>
+          <a href="https://www.city.sammu.lg.jp/" target="_blank" rel="noopener">行政HP</a>
+        </div>
+      </article>
+
+      <article class="card item">
+        <div class="card-head"><h3>栄町</h3><span class="disaster-tag">台風25号</span><span class="status st-adjust">開設中・調整中</span></div>
+        <dl><dt>活動期間</dt><dd>調整中</dd><dt>募集範囲</dt><dd>町内</dd></dl>
+        <div class="extra"><div class="extra-label">補足（独自集計）</div><ul>
+          <li>水が引いていない地区あり</li></ul></div>
+        <div class="links">
+          <a class="main" href="http://www.green.dti.ne.jp/sakae-shakyo/" target="_blank" rel="noopener">社協HP</a>
+          <a href="https://www.town.sakae.chiba.jp/" target="_blank" rel="noopener">行政HP</a>
+        </div>
+      </article>
+
+      <article class="card item">
+        <div class="card-head"><h3>酒々井町</h3><span class="disaster-tag">台風25号</span><span class="status st-adjust">開設中・調整中</span></div>
+        <dl><dt>活動期間</dt><dd>調整中</dd><dt>募集範囲</dt><dd>町内在住在勤</dd></dl>
+        <div class="links">
+          <a class="main" href="https://shisuisyakyo.or.jp/" target="_blank" rel="noopener">社協HP</a>
+          <a href="https://www.town.shisui.chiba.jp/" target="_blank" rel="noopener">行政HP</a>
+        </div>
+      </article>
+
+      <article class="card item">
+        <div class="card-head"><h3>四街道市</h3><span class="disaster-tag">台風25号</span><span class="status st-adjust">開設中・調整中</span></div>
+        <dl><dt>活動期間</dt><dd>調整中</dd><dt>募集範囲</dt><dd>市内在住在学在勤の方</dd></dl>
+        <div class="links">
+          <a class="main" href="https://www.yotsukaido-shakyo.or.jp/" target="_blank" rel="noopener">社協HP</a>
+          <a href="https://www.facebook.com/profile.php?id=100080925625850" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.city.yotsukaido.chiba.jp/" target="_blank" rel="noopener">行政HP</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ===== 通常ボランティアセンター対応 ===== -->
+  <section data-cat="normal">
+    <h2 class="cat">通常ボランティアセンターで対応</h2>
+    <p class="sub-note">※災害VCは設置せず、普段のボランティアセンターで対応している地域です。</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>市町村</th><th>活動期間</th><th>募集範囲</th><th>リンク</th></tr>
+        </thead>
+        <tbody>
+          <tr class="item"><td>柏市</td><td>8/14〜</td><td>市内、登録済みの方</td>
+            <td class="lk"><a href="https://kashiwa-shakyo.com/" target="_blank" rel="noopener">社協HP</a> / <a href="https://www.city.kashiwa.lg.jp/" target="_blank" rel="noopener">行政HP</a></td></tr>
+          <tr class="item"><td>東金市</td><td>未定</td><td>未定</td>
+            <td class="lk"><a href="http://www.togane-shakyo.jp/" target="_blank" rel="noopener">社協HP</a> / <a href="https://www.city.togane.chiba.jp/" target="_blank" rel="noopener">行政HP</a></td></tr>
+          <tr class="item"><td>市川市</td><td>未定</td><td>未定</td>
+            <td class="lk"><a href="https://www.fukusi.jp/" target="_blank" rel="noopener">社協HP</a> / <a href="https://www.city.ichikawa.lg.jp/" target="_blank" rel="noopener">行政HP</a></td></tr>
+          <tr class="item"><td>我孫子市</td><td>未定</td><td>未定</td>
+            <td class="lk"><a href="https://www.abiko-shakyo.com/" target="_blank" rel="noopener">社協HP</a> / <a href="https://www.city.abiko.chiba.jp/site_joho/index.html" target="_blank" rel="noopener">行政HP</a></td></tr>
+          <tr class="item"><td>南房総市</td><td>未定</td><td>未定</td>
+            <td class="lk"><a href="https://www.shakyo-minamiboso.or.jp/" target="_blank" rel="noopener">社協HP</a> / <a href="https://www.city.minamiboso.chiba.jp/" target="_blank" rel="noopener">行政HP</a></td></tr>
+          <tr class="item"><td>富里市</td><td>調整中</td><td>調整中</td>
+            <td class="lk"><a href="https://www.tomisatoshakyo.or.jp/" target="_blank" rel="noopener">社協HP</a> / <a href="https://www.city.tomisato.lg.jp/site_policy/0000000019.html" target="_blank" rel="noopener">行政HP</a></td></tr>
+          <tr class="item"><td>鴨川市</td><td>調整中</td><td>調整中</td>
+            <td class="lk"><a href="https://www.kamoshakyo.or.jp/" target="_blank" rel="noopener">社協HP</a> / <a href="https://www.city.kamogawa.lg.jp/" target="_blank" rel="noopener">行政HP</a></td></tr>
+          <tr class="item"><td>いすみ市</td><td>調整中</td><td>調整中</td>
+            <td class="lk"><a href="http://www.isumishakyo.jp/" target="_blank" rel="noopener">社協HP</a> / <a href="https://www.city.isumi.lg.jp/index.html" target="_blank" rel="noopener">行政HP</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <p class="empty" id="empty">該当する地域が見つかりませんでした。</p>
+</main>
+
+<footer>
+  <p>開設状況・活動期間・募集範囲は「<a href="https://www.saigai-chiba.com/" target="_blank" rel="noopener">千葉災害ボランティア情報</a>」（運営：千葉県社会福祉協議会、千葉県災害ボランティアセンター連絡会）の掲載内容にもとづきます（2026年10月4日取得）。日々の活動状況は<a href="https://www.facebook.com/chiba.vc" target="_blank" rel="noopener">同センターのFacebookページ</a>で発信されています。</p>
+  <p>青枠の「募集サイト掲載」欄（募集人数・実施期間・条件・持ち物など）は、各社協がボランティア募集サイトに掲載した募集情報です（2026年10月4日 9時10分ごろ確認、カッコ内は各掲載の更新日）。</p>
+  <p>「補足（独自集計）」欄は、各社協の発信をもとにした10月4日時点の独自集計です。「情報差異あり」は、情報源によって内容が一致しない地域です。</p>
+  <p>参加の可否・受付方法・持ち物などは、必ず各社協の公式発表をご確認ください。</p>
+  <p>最終更新：2026年10月4日</p>
+</footer>
+
+<script>
+(function () {
+  var buttons = document.querySelectorAll('.controls button');
+  var q = document.getElementById('q');
+  var sections = document.querySelectorAll('main section');
+  var empty = document.getElementById('empty');
+  var current = 'any';
+
+  function apply() {
+    var word = q.value.trim();
+    var total = 0;
+    sections.forEach(function (sec) {
+      var catOk = current === 'any' || sec.dataset.cat === current;
+      var shown = 0;
+      sec.querySelectorAll('.item').forEach(function (it) {
+        var ok = catOk && (!word || it.textContent.indexOf(word) !== -1);
+        it.hidden = !ok;
+        if (ok) shown++;
+      });
+      sec.hidden = shown === 0;
+      total += shown;
+    });
+    empty.style.display = total === 0 ? 'block' : 'none';
+  }
+
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () {
+      current = b.dataset.filter;
+      buttons.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      apply();
+    });
+  });
+  q.addEventListener('input', apply);
+})();
+</script>
+</body>
+</html>
