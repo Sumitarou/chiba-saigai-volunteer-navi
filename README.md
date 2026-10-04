@@ -92,6 +92,7 @@
 | — | 2026-10-04 | GitHub リポジトリ `Sumitarou/chiba-saigai-volunteer-navi` を作成（first commit `595f806`）。 |
 | — | 2026-10-04 | Vercel で本番公開（`chiba-saigai-volunteer-navi.vercel.app`）。 |
 | — | 2026-10-04 | README.md、docs/WORKLOG.md、.gitignore を追加。 |
+| 1.3 | 2026-10-05 | Vercel Web Analytics の計測スクリプトを `<head>` に追加し、フッターにアクセス解析の利用を明記。 |
 
 各版の詳しい判断理由は、[docs/WORKLOG.md](docs/WORKLOG.md) を参照してください。
 
@@ -118,6 +119,7 @@
 - **ブランチを分けると、本番の前に確認できます。** main 以外のブランチに push すると、プレビュー用URLで表示を確かめてから main にマージできます。
 - **Hobby プランは、個人の非商用利用が前提です。** 団体の正式なサイトとして運用する場合や、広告を載せる場合は、プランを見直してください。
 - **GitHub との連携が切れると、自動公開が止まります。** GitHub 側で Vercel のアクセス権を外さないでください。
+- **Web Analytics**：Project → **Analytics** → **Enable** で有効にし、その後のデプロイから計測が始まります。`index.html` の `<head>` にある `/_vercel/insights/script.js` の読み込みを削除しないでください。Hobby プランでは、月あたりの計測数に上限があります（詳しくは Vercel の料金ページを参照）。
 - **独自ドメインを使う場合**：Project → Settings → Domains で追加できます。その場合も、案内するURLは一つに統一してください。
 
 ### 公開範囲と検索エンジン
