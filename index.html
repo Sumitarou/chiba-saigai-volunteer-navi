@@ -147,6 +147,19 @@
     font-size: .9rem;
   }
   .extra-label { font-size: .75rem; color: var(--muted); }
+  .tag.new { background: var(--accent); color: #fff; font-weight: bold; }
+  .extra.v1005 { background: #fff8e1; border-left: 4px solid var(--warn-line); }
+  .update {
+    background: var(--card);
+    border: 2px solid var(--accent);
+    border-radius: 10px;
+    padding: 10px 16px;
+    margin-bottom: 16px;
+  }
+  .update h2 { font-size: 1.05rem; margin: 0 0 4px; color: var(--accent); }
+  .update ul { margin: 0; padding-left: 1.2em; }
+  .update li { margin: 3px 0; }
+  .update .src { font-size: .82rem; color: var(--muted); margin: 6px 0 0; }
   .portal {
     margin-top: 8px;
     padding: 8px 10px;
@@ -217,7 +230,7 @@
   <div class="inner">
     <p class="disaster">令和8年8月千葉豪雨（8月13日）・令和8年台風25号</p>
     <h1>千葉県 災害ボランティアセンター一覧</h1>
-    <p class="date">2026年10月4日時点</p>
+    <p class="date">2026年10月5日時点</p>
   </div>
 </header>
 
@@ -225,6 +238,18 @@
   <p class="notice">
     ※募集状況は日々変わります。出発前に必ず各市町村の社会福祉協議会（社協）ホームページ・Facebookで最新情報を確認してください。
   </p>
+
+  <div class="update">
+    <h2>10月5日の更新</h2>
+    <ul>
+      <li><b>長柄町</b>：人手不足のため応援を求めています</li>
+      <li><b>千葉市</b>：10/5（月）は21名募集。10/6（火）・10/8（木）はボランティアが不足しています</li>
+      <li><b>大網白里市</b>：ニーズ調査のため、10/9（金）から再開します</li>
+      <li><b>大多喜町・栄町</b>：災害ボランティアセンターが新たに開設されました（町内向け）</li>
+      <li><b>君津市</b>：募集範囲は全国（事前登録制）です</li>
+    </ul>
+    <p class="src">※ボランティア参加者からの情報です。各カードの「10/5更新」の印が付いた項目を確認し、参加前に必ず各社協の公式発表をご確認ください。</p>
+  </div>
 
   <div class="info">
     <h2>参加前に</h2>
@@ -235,7 +260,7 @@
         （<a href="https://www.saigai-chiba.com/2026/09/01/%E3%83%9C%E3%83%A9%E3%83%B3%E3%83%86%E3%82%A3%E3%82%A2%E3%83%90%E3%82%B9%E3%81%A7%E3%81%AE%E6%94%AF%E6%8F%B4%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/" target="_blank" rel="noopener">詳細</a>）</li>
       <li>活動前にボランティア活動保険に加入してください。
         （<a href="https://www.saigai-chiba.com/2026/08/20/%E7%81%BD%E5%AE%B3%E6%99%82%E3%81%AE%E3%83%9C%E3%83%A9%E3%83%B3%E3%83%86%E3%82%A3%E3%82%A2%E6%B4%BB%E5%8B%95%E4%BF%9D%E9%99%BA%E3%81%AE%E5%8A%A0%E5%85%A5%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/" target="_blank" rel="noopener">詳細</a>）</li>
-      <li>ボランティア車両の高速道路無料措置があります。事前に手続きが必要です。
+      <li>ボランティア車両の高速道路無料措置があります。事前に手続きが必要です。対象になるかどうかは、行く前に活動先の社協に確認してください。
         （<a href="https://www.saigai-chiba.com/2026/08/20/%E9%AB%98%E9%80%9F%E9%81%93%E8%B7%AF%E3%81%AE%E7%84%A1%E6%96%99%E6%8E%AA%E7%BD%AE%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/" target="_blank" rel="noopener">詳細</a>）</li>
     </ul>
   </div>
@@ -256,10 +281,12 @@
     <div class="grid">
 
       <article class="card item">
-        <div class="card-head"><h3>大網白里市</h3><span class="disaster-tag">8月豪雨</span><span class="status st-open">開設中</span></div>
+        <div class="card-head"><h3>大網白里市</h3><span class="disaster-tag">8月豪雨</span><span class="status st-adjust">10/9（金）再開</span></div>
         <dl><dt>活動期間</dt><dd>8/16〜</dd><dt>募集範囲</dt><dd>全国（事前登録制）</dd></dl>
-        <div class="extra"><div class="extra-label">補足（独自集計）</div><ul>
-          <li>40名募集</li><li>ニーズ直近8件（累計473件）</li><li>土砂の撤去、家財の搬出</li></ul></div>
+        <span class="tag new">10/5更新</span>
+        <span class="tag alert">ニーズ調査のため、10/9（金）から再開</span>
+        <div class="extra v1005"><div class="extra-label">補足（参加者情報 10/5）</div><ul>
+          <li>10/4（日）43名募集</li><li>ニーズ直近10件（累計475件）</li><li>土砂の撤去、家財の搬出</li></ul></div>
         <div class="links">
           <a class="main" href="https://www.shakyo-sys.jp/oami/info_top.php?no=16360" target="_blank" rel="noopener">詳細・登録</a>
           <a href="http://www.oamishakyo.com/" target="_blank" rel="noopener">社協HP</a>
@@ -286,10 +313,11 @@
 
       <article class="card item">
         <div class="card-head"><h3>君津市</h3><span class="disaster-tag">台風25号</span><span class="status st-open">開設中</span></div>
-        <dl><dt>活動期間</dt><dd>10/1以降〜</dd><dt>募集範囲</dt><dd>全国</dd></dl>
+        <dl><dt>活動期間</dt><dd>10/1以降〜</dd><dt>募集範囲</dt><dd>全国（事前登録）</dd></dl>
+        <span class="tag new">10/5更新</span>
         <span class="tag alert">かなりの重労働</span>
         <div class="extra"><div class="extra-label">補足（独自集計）</div><ul>
-          <li>6名募集</li><li>直近ニーズ1件（残り約200件）</li><li>土砂崩れ付近の住宅の土砂撤去</li></ul></div>
+          <li>6名募集</li><li>直近ニーズ1件</li><li>土砂崩れ付近の住宅の土砂撤去</li></ul></div>
         <div class="links">
           <a class="main" href="https://www.kimitsu-shakyo.or.jp/index.php" target="_blank" rel="noopener">社協HP</a>
           <a href="https://www.city.kimitsu.lg.jp/" target="_blank" rel="noopener">行政HP</a>
@@ -302,7 +330,7 @@
   <!-- ===== 千葉県内から参加OK ===== -->
   <section data-cat="pref">
     <h2 class="cat">千葉県内から参加OK</h2>
-    <p class="sub-note">※県内募集の地域でも、東京および関東近郊から軽トラで参加OKのところがあります（車両は要確認）</p>
+    <p class="sub-note">※県内募集の地域でも、東京および関東近郊から軽トラで参加OKのところがあります（車両は要確認）。県外から参加している方もいますが、受け入れの可否は必ず事前に各社協へ確認してください。</p>
     <div class="grid">
 
       <article class="card item">
@@ -322,7 +350,8 @@
       <article class="card item">
         <div class="card-head"><h3>千葉市</h3><span class="disaster-tag">8月豪雨</span><span class="status st-open">開設中</span></div>
         <dl><dt>活動期間</dt><dd>8/20〜10/31（9/30休止）</dd><dt>募集範囲</dt><dd>千葉県内（事前登録）</dd></dl>
-        <span class="tag alert">10月5日（月）大型案件あり</span>
+        <span class="tag new">10/5更新</span>
+        <span class="tag alert">10/6（火）・10/8（木）ボランティア不足</span>
         <span class="tag alert">雨天・荒天時は中止</span>
         <div class="portal"><div class="portal-label">募集サイト掲載（10/4更新）</div>
           <p class="num">募集人数 100名</p>
@@ -330,8 +359,8 @@
             <dt>活動内容</dt><dd>令和8年8月千葉豪雨災害の復興支援（中止の判断は千葉市社協HPで確認）</dd>
             <dt>条件</dt><dd>ボランティア活動保険加入者、千葉県内在住の方</dd>
             <dt>持ち物</dt><dd>服装：長袖・長ズボン・長靴／昼食・飲み物</dd></dl></div>
-        <div class="extra"><div class="extra-label">補足（独自集計）</div><ul>
-          <li>直近26名募集</li><li>直近ニーズ2件</li><li>家財・畳の搬出</li></ul></div>
+        <div class="extra v1005"><div class="extra-label">補足（参加者情報 10/5）</div><ul>
+          <li>10/5（月）21名募集</li><li>直近ニーズ5件</li><li>土砂撤去</li></ul></div>
         <div class="links">
           <a class="main" href="https://chiba-shakyo.jp/all/r8-saigai-vc/" target="_blank" rel="noopener">詳細・登録</a>
           <a href="https://www.facebook.com/profile.php?id=61593208779908" target="_blank" rel="noopener">Facebook</a>
@@ -355,6 +384,8 @@
       <article class="card item">
         <div class="card-head"><h3>長柄町</h3><span class="disaster-tag">台風25号</span><span class="status st-open">開設中</span></div>
         <dl><dt>活動期間</dt><dd>10/1〜</dd><dt>募集範囲</dt><dd>千葉県内</dd></dl>
+        <span class="tag new">10/5更新</span>
+        <span class="tag alert">人手不足：応援を求めています</span>
         <span class="tag alert">10月5日（月）休み・6日（火）再開</span>
         <div class="extra"><div class="extra-label">補足（独自集計）</div><ul>
           <li>片付け、泥かき、運搬</li></ul></div>
@@ -508,6 +539,37 @@
         </div>
       </article>
 
+      <article class="card item">
+        <div class="card-head"><h3>大多喜町</h3><span class="disaster-tag">台風25号</span><span class="status st-open">新たに開設</span></div>
+        <dl><dt>活動期間</dt><dd>社協に確認</dd><dt>募集範囲</dt><dd>町内のみ（独自集計）</dd></dl>
+        <span class="tag new">10/5更新</span>
+        <span class="tag diff">公式まとめサイト（10/4時点）では活動期間・募集範囲とも「調整中」</span>
+        <div class="extra v1005"><div class="extra-label">補足（参加者情報 10/5）</div><ul>
+          <li>災害ボランティアセンターが新たに開設</li></ul></div>
+        <div class="extra"><div class="extra-label">補足（独自集計）</div><ul>
+          <li>片付け、搬出、土砂撤去</li></ul></div>
+        <div class="links">
+          <a class="main" href="https://www.ootaki-shakyo.jp/" target="_blank" rel="noopener">社協HP</a>
+          <a href="https://www.facebook.com/people/%E5%A4%A7%E5%A4%9A%E5%96%9C%E7%94%BA%E7%A4%BE%E5%8D%94/pfbid0Cd8EdJruKWzQQNsbDGqsvRbPFDqYEvLuWaPHZKR3LgXquBECSMUQAGbK4MqWU3cBl/" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.town.otaki.chiba.jp/" target="_blank" rel="noopener">行政HP</a>
+        </div>
+      </article>
+
+      <article class="card item">
+        <div class="card-head"><h3>栄町</h3><span class="disaster-tag">台風25号</span><span class="status st-open">新たに開設</span></div>
+        <dl><dt>活動期間</dt><dd>社協に確認</dd><dt>募集範囲</dt><dd>町内</dd></dl>
+        <span class="tag new">10/5更新</span>
+        <span class="tag diff">公式まとめサイト（10/4時点）では活動期間「調整中」</span>
+        <div class="extra v1005"><div class="extra-label">補足（参加者情報 10/5）</div><ul>
+          <li>災害ボランティアセンターが新たに開設</li></ul></div>
+        <div class="extra"><div class="extra-label">補足（独自集計）</div><ul>
+          <li>水が引いていない地区あり</li></ul></div>
+        <div class="links">
+          <a class="main" href="http://www.green.dti.ne.jp/sakae-shakyo/" target="_blank" rel="noopener">社協HP</a>
+          <a href="https://www.town.sakae.chiba.jp/" target="_blank" rel="noopener">行政HP</a>
+        </div>
+      </article>
+
     </div>
   </section>
 
@@ -528,34 +590,11 @@
       </article>
 
       <article class="card item">
-        <div class="card-head"><h3>大多喜町</h3><span class="disaster-tag">台風25号</span><span class="status st-adjust">開設中・調整中</span></div>
-        <dl><dt>活動期間</dt><dd>調整中</dd><dt>募集範囲</dt><dd>調整中</dd></dl>
-        <div class="extra"><div class="extra-label">補足（独自集計）</div><ul>
-          <li>町内のみ／片付け、搬出、土砂撤去</li></ul></div>
-        <div class="links">
-          <a class="main" href="https://www.ootaki-shakyo.jp/" target="_blank" rel="noopener">社協HP</a>
-          <a href="https://www.facebook.com/people/%E5%A4%A7%E5%A4%9A%E5%96%9C%E7%94%BA%E7%A4%BE%E5%8D%94/pfbid0Cd8EdJruKWzQQNsbDGqsvRbPFDqYEvLuWaPHZKR3LgXquBECSMUQAGbK4MqWU3cBl/" target="_blank" rel="noopener">Facebook</a>
-          <a href="https://www.town.otaki.chiba.jp/" target="_blank" rel="noopener">行政HP</a>
-        </div>
-      </article>
-
-      <article class="card item">
         <div class="card-head"><h3>山武市</h3><span class="disaster-tag">台風25号</span><span class="status st-adjust">開設中・調整中</span></div>
         <dl><dt>活動期間</dt><dd>調整中</dd><dt>募集範囲</dt><dd>山武市内、近隣市町</dd></dl>
         <div class="links">
           <a class="main" href="https://www.sammushakyo.jp/" target="_blank" rel="noopener">社協HP</a>
           <a href="https://www.city.sammu.lg.jp/" target="_blank" rel="noopener">行政HP</a>
-        </div>
-      </article>
-
-      <article class="card item">
-        <div class="card-head"><h3>栄町</h3><span class="disaster-tag">台風25号</span><span class="status st-adjust">開設中・調整中</span></div>
-        <dl><dt>活動期間</dt><dd>調整中</dd><dt>募集範囲</dt><dd>町内</dd></dl>
-        <div class="extra"><div class="extra-label">補足（独自集計）</div><ul>
-          <li>水が引いていない地区あり</li></ul></div>
-        <div class="links">
-          <a class="main" href="http://www.green.dti.ne.jp/sakae-shakyo/" target="_blank" rel="noopener">社協HP</a>
-          <a href="https://www.town.sakae.chiba.jp/" target="_blank" rel="noopener">行政HP</a>
         </div>
       </article>
 
@@ -618,10 +657,10 @@
 <footer>
   <p>開設状況・活動期間・募集範囲は「<a href="https://www.saigai-chiba.com/" target="_blank" rel="noopener">千葉災害ボランティア情報</a>」（運営：千葉県社会福祉協議会、千葉県災害ボランティアセンター連絡会）の掲載内容にもとづきます（2026年10月4日取得）。日々の活動状況は<a href="https://www.facebook.com/chiba.vc" target="_blank" rel="noopener">同センターのFacebookページ</a>で発信されています。</p>
   <p>青枠の「募集サイト掲載」欄（募集人数・実施期間・条件・持ち物など）は、各社協がボランティア募集サイトに掲載した募集情報です（2026年10月4日 9時10分ごろ確認、カッコ内は各掲載の更新日）。</p>
-  <p>「補足（独自集計）」欄は、各社協の発信をもとにした10月4日時点の独自集計です。「情報差異あり」は、情報源によって内容が一致しない地域です。</p>
+  <p>「補足（独自集計）」欄は、各社協の発信をもとにした10月4日時点の独自集計です。黄色の「補足（参加者情報 10/5）」欄と「10/5更新」の印は、10月5日にボランティア参加者から寄せられた情報です。「情報差異あり」は、情報源によって内容が一致しない地域です。</p>
   <p>参加の可否・受付方法・持ち物などは、必ず各社協の公式発表をご確認ください。</p>
   <p>本ページでは、閲覧数の把握のため Vercel Web Analytics を利用しています（Cookie は使用せず、個人を特定する情報は収集しません）。</p>
-  <p>最終更新：2026年10月4日</p>
+  <p>最終更新：2026年10月5日</p>
 </footer>
 
 <script>

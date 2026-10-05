@@ -2,3 +2,5 @@
 sample.txt
 *.zip
 index_backup_*.html
+
+*memo.txt
