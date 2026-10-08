@@ -197,6 +197,8 @@
   .st-adjust { background: #fff4e5; color: #8a4b00; }
   .st-prep   { background: #e8f0fe; color: #1f4fa0; }
   .st-normal { background: #efe8f7; color: #5b3a8c; }
+  .st-end    { background: #eceff1; color: #4b5563; }
+  article.ended { opacity: .75; }
 
   /* 通常VCは表で */
   .table-wrap { overflow-x: auto; }
@@ -235,7 +237,7 @@
   <div class="inner">
     <p class="disaster">令和8年8月千葉豪雨（8月13日）・令和8年台風25号</p>
     <h1>千葉県 災害ボランティアセンター一覧</h1>
-    <p class="date">2026年10月5日時点</p>
+    <p class="date">2026年10月8日時点</p>
   </div>
 </header>
 
@@ -245,13 +247,19 @@
   </p>
 
   <div class="update">
+    <h2>10月8日の更新</h2>
+    <ul>
+      <li><b>君津市</b>：募集10名。作業は土砂撤去（土嚢作り）・家財運び出し等です</li>
+      <li><b>木更津市</b>：富来田サテライトの募集が20名になりました</li>
+      <li data-end="2026-10-09" data-end-text="四街道市：10/9（金）の活動で募集は終了しました"><b>四街道市</b>：10/9（金）に活動します（募集10名、募集は10/9まで）</li>
+    </ul>
+    <p class="src">※ボランティア参加者からの情報と、募集サイトの掲載です。各カードの「10/8更新」の印が付いた項目を確認し、参加前に必ず各社協の公式発表をご確認ください。</p>
+  </div>
+
+  <div class="update">
     <h2>10月5日の更新</h2>
     <ul>
       <li><b>長柄町</b>：人手不足のため応援を求めています</li>
-      <li><b>千葉市</b>：10/5（月）は21名募集。10/6（火）・10/8（木）はボランティアが不足しています</li>
-      <li><b>大網白里市</b>：ニーズ調査のため、10/9（金）から再開します</li>
-      <li><b>大多喜町・栄町</b>：災害ボランティアセンターが新たに開設されました（町内向け）</li>
-      <li><b>君津市</b>：募集範囲は全国（事前登録制）です</li>
     </ul>
     <p class="src">※ボランティア参加者からの情報です。各カードの「10/5更新」の印が付いた項目を確認し、参加前に必ず各社協の公式発表をご確認ください。</p>
   </div>
@@ -288,7 +296,6 @@
       <article class="card item">
         <div class="card-head"><h3>大網白里市</h3><span class="disaster-tag">8月豪雨</span><span class="status st-adjust">10/9（金）再開</span></div>
         <dl><dt>活動期間</dt><dd>8/16〜</dd><dt>募集範囲</dt><dd>全国（事前登録制）</dd></dl>
-        <span class="tag new">10/5更新</span>
         <span class="tag alert">ニーズ調査のため、10/9（金）から再開</span>
         <div class="extra v1005"><div class="extra-label">補足（参加者情報 10/5）</div><ul>
           <li>10/4（日）43名募集</li><li>ニーズ直近10件（累計475件）</li><li>土砂の撤去、家財の搬出</li></ul></div>
@@ -319,10 +326,9 @@
       <article class="card item">
         <div class="card-head"><h3>君津市</h3><span class="disaster-tag">台風25号</span><span class="status st-open">開設中</span></div>
         <dl><dt>活動期間</dt><dd>10/1以降〜</dd><dt>募集範囲</dt><dd>全国（事前登録）</dd></dl>
-        <span class="tag new">10/5更新</span>
-        <span class="tag alert">かなりの重労働</span>
-        <div class="extra"><div class="extra-label">補足（独自集計）</div><ul>
-          <li>6名募集</li><li>直近ニーズ1件</li><li>土砂崩れ付近の住宅の土砂撤去</li></ul></div>
+        <span class="tag new">10/8更新</span>
+        <div class="extra v1005"><div class="extra-label">補足（参加者情報 10/8）</div><ul>
+          <li>10名募集</li><li>土砂撤去（土嚢作り）・家財運び出し等</li></ul></div>
         <div class="links">
           <a class="main" href="https://www.kimitsu-shakyo.or.jp/index.php" target="_blank" rel="noopener">社協HP</a>
           <a href="https://www.city.kimitsu.lg.jp/" target="_blank" rel="noopener">行政HP</a>
@@ -355,7 +361,6 @@
       <article class="card item">
         <div class="card-head"><h3>千葉市</h3><span class="disaster-tag">8月豪雨</span><span class="status st-open">開設中</span></div>
         <dl><dt>活動期間</dt><dd>8/20〜10/31（9/30休止）</dd><dt>募集範囲</dt><dd>千葉県内（事前登録）</dd></dl>
-        <span class="tag new">10/5更新</span>
         <span class="tag alert">10/6（火）・10/8（木）ボランティア不足</span>
         <span class="tag alert">雨天・荒天時は中止</span>
         <div class="portal"><div class="portal-label">募集サイト掲載（10/4更新）</div>
@@ -463,9 +468,10 @@
       <article class="card item">
         <div class="card-head"><h3>木更津市</h3><span class="disaster-tag">台風25号</span><span class="status st-open">開設中</span></div>
         <dl><dt>活動期間</dt><dd>9/25〜</dd><dt>募集範囲</dt><dd>市内の災害対策コーディネーターのみ</dd></dl>
+        <span class="tag new">10/8更新</span>
         <span class="tag alert">全て重労働</span>
-        <div class="portal"><div class="portal-label">募集サイト掲載：富来田サテライト（10/3更新）</div>
-          <p class="num">募集人数 10名</p>
+        <div class="portal"><div class="portal-label">募集サイト掲載：富来田サテライト（10/3更新、募集人数は10/8更新）</div>
+          <p class="num">募集人数 20名</p>
           <dl><dt>実施期間</dt><dd>9/30〜10/31</dd><dt>募集期間</dt><dd>9/29〜10/9</dd>
             <dt>活動内容</dt><dd>宅内・庭先の土砂撤去作業、被災した家具の運び出し作業</dd>
             <dt>条件</dt><dd>木更津市近隣にお住まいの方</dd></dl></div>
@@ -544,10 +550,27 @@
         </div>
       </article>
 
+      <article class="card item" data-end="2026-10-09">
+        <div class="card-head"><h3>四街道市</h3><span class="disaster-tag">台風25号</span><span class="status st-open">開設中</span></div>
+        <dl><dt>活動期間</dt><dd>10/9（金）</dd><dt>募集範囲</dt><dd>市内在住在学在勤の方</dd></dl>
+        <span class="tag new">10/8更新</span>
+        <span class="tag alert" data-end-text="10/9で募集終了">募集は10/9まで</span>
+        <div class="portal"><div class="portal-label">募集サイト掲載（10/8確認）</div>
+          <p class="num">募集人数 10名</p>
+          <dl><dt>実施期間</dt><dd>10/9〜10/9</dd><dt>募集期間</dt><dd>10/6〜10/9</dd>
+            <dt>活動地域</dt><dd>四街道市</dd>
+            <dt>活動内容</dt><dd>家屋内外の片付け・清掃、家具の搬出、床下の清掃・乾燥作業、その他お困りごとの相談、聞き取りボランティア、ポスティング</dd>
+            <dt>条件</dt><dd>18歳未満は保護者の同意書が必要（様式自由）</dd></dl></div>
+        <div class="links">
+          <a class="main" href="https://www.yotsukaido-shakyo.or.jp/" target="_blank" rel="noopener">社協HP</a>
+          <a href="https://www.facebook.com/profile.php?id=100080925625850" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.city.yotsukaido.chiba.jp/" target="_blank" rel="noopener">行政HP</a>
+        </div>
+      </article>
+
       <article class="card item">
         <div class="card-head"><h3>大多喜町</h3><span class="disaster-tag">台風25号</span><span class="status st-open">新たに開設</span></div>
         <dl><dt>活動期間</dt><dd>社協に確認</dd><dt>募集範囲</dt><dd>町内のみ（独自集計）</dd></dl>
-        <span class="tag new">10/5更新</span>
         <span class="tag diff">公式まとめサイト（10/4時点）では活動期間・募集範囲とも「調整中」</span>
         <div class="extra v1005"><div class="extra-label">補足（参加者情報 10/5）</div><ul>
           <li>災害ボランティアセンターが新たに開設</li></ul></div>
@@ -563,7 +586,6 @@
       <article class="card item">
         <div class="card-head"><h3>栄町</h3><span class="disaster-tag">台風25号</span><span class="status st-open">新たに開設</span></div>
         <dl><dt>活動期間</dt><dd>社協に確認</dd><dt>募集範囲</dt><dd>町内</dd></dl>
-        <span class="tag new">10/5更新</span>
         <span class="tag diff">公式まとめサイト（10/4時点）では活動期間「調整中」</span>
         <div class="extra v1005"><div class="extra-label">補足（参加者情報 10/5）</div><ul>
           <li>災害ボランティアセンターが新たに開設</li></ul></div>
@@ -612,16 +634,6 @@
         </div>
       </article>
 
-      <article class="card item">
-        <div class="card-head"><h3>四街道市</h3><span class="disaster-tag">台風25号</span><span class="status st-adjust">開設中・調整中</span></div>
-        <dl><dt>活動期間</dt><dd>調整中</dd><dt>募集範囲</dt><dd>市内在住在学在勤の方</dd></dl>
-        <div class="links">
-          <a class="main" href="https://www.yotsukaido-shakyo.or.jp/" target="_blank" rel="noopener">社協HP</a>
-          <a href="https://www.facebook.com/profile.php?id=100080925625850" target="_blank" rel="noopener">Facebook</a>
-          <a href="https://www.city.yotsukaido.chiba.jp/" target="_blank" rel="noopener">行政HP</a>
-        </div>
-      </article>
-
     </div>
   </section>
 
@@ -662,14 +674,29 @@
 <footer>
   <p>開設状況・活動期間・募集範囲は「<a href="https://www.saigai-chiba.com/" target="_blank" rel="noopener">千葉災害ボランティア情報</a>」（運営：千葉県社会福祉協議会、千葉県災害ボランティアセンター連絡会）の掲載内容にもとづきます（2026年10月4日取得）。日々の活動状況は<a href="https://www.facebook.com/chiba.vc" target="_blank" rel="noopener">同センターのFacebookページ</a>で発信されています。</p>
   <p>青枠の「募集サイト掲載」欄（募集人数・実施期間・条件・持ち物など）は、各社協がボランティア募集サイトに掲載した募集情報です（2026年10月4日 9時10分ごろ確認、カッコ内は各掲載の更新日）。</p>
-  <p>「補足（独自集計）」欄は、各社協の発信をもとにした10月4日時点の独自集計です。黄色の「補足（参加者情報 10/5）」欄と「10/5更新」の印は、10月5日にボランティア参加者から寄せられた情報です。「情報差異あり」は、情報源によって内容が一致しない地域です。</p>
+  <p>「補足（独自集計）」欄は、各社協の発信をもとにした10月4日時点の独自集計です。黄色の「補足（参加者情報 ○/○）」欄と「○/○更新」の印は、その日にボランティア参加者から寄せられた情報です。「情報差異あり」は、情報源によって内容が一致しない地域です。</p>
   <p>参加の可否・受付方法・持ち物などは、必ず各社協の公式発表をご確認ください。</p>
   <p>本ページでは、閲覧数の把握のため Vercel Web Analytics を利用しています（Cookie は使用せず、個人を特定する情報は収集しません）。</p>
   <p>タブのアイコン（千葉県の形）は「地球地図日本」（国土地理院）のデータをもとに作成しました。</p>
-  <p>最終更新：2026年10月5日</p>
+  <p>最終更新：2026年10月8日</p>
 </footer>
 
 <script>
+// data-end（YYYY-MM-DD）を過ぎたカードを、日本時間の日付で自動的に「募集終了」の表示に切り替える
+(function () {
+  var today = new Date(Date.now() + 9 * 3600 * 1000).toISOString().slice(0, 10);
+  document.querySelectorAll('article[data-end]').forEach(function (card) {
+    if (today <= card.dataset.end) return;
+    card.classList.add('ended');
+    var st = card.querySelector('.status');
+    if (st) { st.textContent = '募集終了'; st.className = 'status st-end'; }
+    card.querySelectorAll('[data-end-text]').forEach(function (el) { el.textContent = el.dataset.endText; });
+  });
+  document.querySelectorAll('li[data-end]').forEach(function (li) {
+    if (today > li.dataset.end) li.textContent = li.dataset.endText;
+  });
+})();
+
 (function () {
   var buttons = document.querySelectorAll('.controls button');
   var q = document.getElementById('q');
