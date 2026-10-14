@@ -152,6 +152,7 @@
     font-size: .9rem;
   }
   .extra-label { font-size: .75rem; color: var(--muted); }
+  .card > .tag { align-self: flex-start; }
   .tag.new { background: var(--accent); color: #fff; font-weight: bold; }
   .extra.v1005 { background: #fff8e1; border-left: 4px solid var(--warn-line); }
   .update {
@@ -237,7 +238,7 @@
   <div class="inner">
     <p class="disaster">令和8年8月千葉豪雨（8月13日）・令和8年台風25号</p>
     <h1>千葉県 災害ボランティアセンター一覧</h1>
-    <p class="date">2026年10月8日時点</p>
+    <p class="date">2026年10月14日時点</p>
   </div>
 </header>
 
@@ -247,11 +248,22 @@
   </p>
 
   <div class="update">
+    <h2>10月14日の更新</h2>
+    <ul>
+      <li><b>千葉市</b>：活動日が水・土・日に変わりました</li>
+      <li data-end="2026-10-18" data-end-text="成田市：10/18で受付は終了しました。以降の活動は未定です"><b>成田市</b>：受付は10/18まで。次回の活動は10/17（土）で、10/18以降は未定です</li>
+      <li><b>長柄町</b>：10/15（木）から活動を再開します</li>
+      <li><b>大網白里市</b>：活動は土日のみになりました</li>
+    </ul>
+    <p class="src">※ボランティア参加者からの情報です。各カードの「10/14更新」の印が付いた項目を確認し、参加前に必ず各社協の公式発表をご確認ください。</p>
+  </div>
+
+  <div class="update">
     <h2>10月8日の更新</h2>
     <ul>
       <li><b>君津市</b>：募集10名。作業は土砂撤去（土嚢作り）・家財運び出し等です</li>
       <li><b>木更津市</b>：富来田サテライトの募集が20名になりました</li>
-      <li data-end="2026-10-09" data-end-text="四街道市：10/9（金）の活動で募集は終了しました"><b>四街道市</b>：10/9（金）に活動します（募集10名、募集は10/9まで）</li>
+      <li><b>四街道市</b>：10/9（金）の活動で募集は終了しました</li>
     </ul>
     <p class="src">※ボランティア参加者からの情報と、募集サイトの掲載です。各カードの「10/8更新」の印が付いた項目を確認し、参加前に必ず各社協の公式発表をご確認ください。</p>
   </div>
@@ -294,9 +306,10 @@
     <div class="grid">
 
       <article class="card item">
-        <div class="card-head"><h3>大網白里市</h3><span class="disaster-tag">8月豪雨</span><span class="status st-adjust">10/9（金）再開</span></div>
+        <div class="card-head"><h3>大網白里市</h3><span class="disaster-tag">8月豪雨</span><span class="status st-open">開設中</span></div>
         <dl><dt>活動期間</dt><dd>8/16〜</dd><dt>募集範囲</dt><dd>全国（事前登録制）</dd></dl>
-        <span class="tag alert">ニーズ調査のため、10/9（金）から再開</span>
+        <span class="tag new">10/14更新</span>
+        <span class="tag alert">活動は土日のみ</span>
         <div class="extra v1005"><div class="extra-label">補足（参加者情報 10/5）</div><ul>
           <li>10/4（日）43名募集</li><li>ニーズ直近10件（累計475件）</li><li>土砂の撤去、家財の搬出</li></ul></div>
         <div class="links">
@@ -361,7 +374,8 @@
       <article class="card item">
         <div class="card-head"><h3>千葉市</h3><span class="disaster-tag">8月豪雨</span><span class="status st-open">開設中</span></div>
         <dl><dt>活動期間</dt><dd>8/20〜10/31（9/30休止）</dd><dt>募集範囲</dt><dd>千葉県内（事前登録）</dd></dl>
-        <span class="tag alert">10/6（火）・10/8（木）ボランティア不足</span>
+        <span class="tag new">10/14更新</span>
+        <span class="tag alert">活動日は水・土・日</span>
         <span class="tag alert">雨天・荒天時は中止</span>
         <div class="portal"><div class="portal-label">募集サイト掲載（10/4更新）</div>
           <p class="num">募集人数 100名</p>
@@ -392,11 +406,12 @@
       </article>
 
       <article class="card item">
-        <div class="card-head"><h3>長柄町</h3><span class="disaster-tag">台風25号</span><span class="status st-open">開設中</span></div>
+        <div class="card-head"><h3>長柄町</h3><span class="disaster-tag">台風25号</span><span class="status st-adjust">10/15（木）再開</span></div>
         <dl><dt>活動期間</dt><dd>10/1〜</dd><dt>募集範囲</dt><dd>千葉県内</dd></dl>
+        <span class="tag new">10/14更新</span>
         <span class="tag new">10/5更新</span>
+        <span class="tag alert">10/15（木）から活動再開</span>
         <span class="tag alert">人手不足：応援を求めています</span>
-        <span class="tag alert">10月5日（月）休み・6日（火）再開</span>
         <div class="extra"><div class="extra-label">補足（独自集計）</div><ul>
           <li>片付け、泥かき、運搬</li></ul></div>
         <div class="links">
@@ -406,9 +421,12 @@
         </div>
       </article>
 
-      <article class="card item">
+      <article class="card item" data-end="2026-10-18" data-end-status="受付終了">
         <div class="card-head"><h3>成田市</h3><span class="disaster-tag">台風25号</span><span class="status st-open">開設中</span></div>
         <dl><dt>活動期間</dt><dd>10/2〜</dd><dt>募集範囲</dt><dd>18歳以上、千葉県内・近郊から日帰りができる方（技術ボランティアは全国）</dd></dl>
+        <span class="tag new">10/14更新</span>
+        <span class="tag alert" data-end-text="10/18で受付終了（以降の活動は未定）">受付は10/18まで</span>
+        <span class="tag alert" data-end-text="10/18以降の活動は未定">次回の活動は10/17（土）、10/18以降は未定</span>
         <span class="tag alert">活動場所は断水中</span>
         <span class="tag diff">情報差異あり：公式まとめサイトでは「市在住・在勤、市内近郊の方」</span>
         <div class="portal"><div class="portal-label">募集サイト掲載（10/3更新）</div>
@@ -550,11 +568,11 @@
         </div>
       </article>
 
-      <article class="card item" data-end="2026-10-09">
-        <div class="card-head"><h3>四街道市</h3><span class="disaster-tag">台風25号</span><span class="status st-open">開設中</span></div>
+      <article class="card item ended">
+        <div class="card-head"><h3>四街道市</h3><span class="disaster-tag">台風25号</span><span class="status st-end">募集終了</span></div>
         <dl><dt>活動期間</dt><dd>10/9（金）</dd><dt>募集範囲</dt><dd>市内在住在学在勤の方</dd></dl>
         <span class="tag new">10/8更新</span>
-        <span class="tag alert" data-end-text="10/9で募集終了">募集は10/9まで</span>
+        <span class="tag alert">10/9で募集終了</span>
         <div class="portal"><div class="portal-label">募集サイト掲載（10/8確認）</div>
           <p class="num">募集人数 10名</p>
           <dl><dt>実施期間</dt><dd>10/9〜10/9</dd><dt>募集期間</dt><dd>10/6〜10/9</dd>
@@ -678,7 +696,7 @@
   <p>参加の可否・受付方法・持ち物などは、必ず各社協の公式発表をご確認ください。</p>
   <p>本ページでは、閲覧数の把握のため Vercel Web Analytics を利用しています（Cookie は使用せず、個人を特定する情報は収集しません）。</p>
   <p>タブのアイコン（千葉県の形）は「地球地図日本」（国土地理院）のデータをもとに作成しました。</p>
-  <p>最終更新：2026年10月8日</p>
+  <p>最終更新：2026年10月14日</p>
 </footer>
 
 <script>
@@ -689,7 +707,7 @@
     if (today <= card.dataset.end) return;
     card.classList.add('ended');
     var st = card.querySelector('.status');
-    if (st) { st.textContent = '募集終了'; st.className = 'status st-end'; }
+    if (st) { st.textContent = card.dataset.endStatus || '募集終了'; st.className = 'status st-end'; }
     card.querySelectorAll('[data-end-text]').forEach(function (el) { el.textContent = el.dataset.endText; });
   });
   document.querySelectorAll('li[data-end]').forEach(function (li) {
